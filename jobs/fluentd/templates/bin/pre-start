@@ -1,0 +1,12 @@
+#!/bin/bash
+  
+set -e
+
+FLUENTD_VERISON=1.15.2
+
+export PATH=$PATH:/var/vcap/packages/ruby/bin
+export PATH=$PATH:/var/vcap/packages/fluentd/bin
+
+cd /var/vcap/packages/fluentd/bin
+sudo ./fluent-gem install fluent-plugin-influxdb
+gem install influxdb -v 0.8.1 --no-document
