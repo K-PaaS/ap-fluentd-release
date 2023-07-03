@@ -1,0 +1,13 @@
+#ignore output and build directories
+.dev_builds/**
+dev_releases/**
+blobs/**
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tgz
+*.rar
+

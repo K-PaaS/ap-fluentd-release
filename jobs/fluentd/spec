@@ -1,0 +1,37 @@
+---
+name: fluentd
+
+templates:
+  bin/pre-start: bin/pre-start
+  bin/fluentd_ctl.erb: bin/fluentd_ctl
+  conf/fluent.conf.erb: conf/fluent.conf
+packages:
+  - fluentd
+  - ruby
+
+properties:
+  fluentd.port: 
+    description: Syslog Port 
+    default: 2514
+  fluentd.transport: 
+    description: Syslog Protocol
+  logging.db.name:
+    description: Logging DB name
+  logging.measurement.name:
+    description: Logging measurement name
+  logging.time.precision:
+    description: The time precision of timestamp
+    default: s
+  influxdb.http.host:
+    description: Influx DB host
+  influxdb.http.port:
+    description: Influx DB port
+    default: 8086
+  influxdb.user:
+    description: InfluxDB username
+    default: admin
+  influxdb.password:
+    description: Influx DB password
+    default: PaaS-TA2020
+  influxdb.ssl.enabled:
+    description: Use SSL when connecting to InfluxDB

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PID_FILE=/var/vcap/sys/run/fluentd/fluentd.pid
+FLUENTD_CONF=/var/vcap/jobs/fluentd/conf/fluent.conf
+LOG_FILE=/var/vcap/sys/log/fluentd/fluentd.out
+
+case $1 in
+  start)
+    echo "start"
+    export PATH=$PATH:/var/vcap/packages/ruby/bin
+    exec /var/vcap/packages/fluentd/bin/fluentd -c $FLUENTD_CONF -d $PID_FILE -vv > $LOG_FILE &
+  
+    # Make PID file
+    sleep 3
+    chmod 666 $PID_FILE
+    chown vcap:vcap $PID_FILE
+    ;;
+
+  stop)
+    echo "stop"
+    pkill -f fluentd
+    sleep 1
+    rm -f $PID_FILE
+    ;;
+
+  *)
+    echo "Usage: fluentd_ctl {start|stop}"
+    ;;
+esac
