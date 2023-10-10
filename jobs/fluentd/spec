@@ -32,6 +32,6 @@ properties:
     default: admin
   influxdb.password:
     description: Influx DB password
-    default: PaaS-TA2020
+    default: K-PaaS2020
   influxdb.ssl.enabled:
     description: Use SSL when connecting to InfluxDB
